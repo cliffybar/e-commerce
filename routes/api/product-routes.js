@@ -49,7 +49,7 @@ router.get('/:id', (req, res) => {
     ],
     include: [
       {
-        mode: Category,
+        model: Category,
         attributes: ['category_name']
       },
       {
@@ -167,6 +167,7 @@ router.delete('/:id', (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    });});
+    });
+});
 
 module.exports = router;
