@@ -7,14 +7,16 @@ router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
   Category.findAll({
-    model: Product,
-    attributes: [
-      'id',
-      'product_name',
-      'price',
-      'stock',
-      'category_id'
-    ],
+    include: {
+      model: Product,
+      attributes: [
+        'id',
+        'product_name',
+        'price',
+        'stock',
+        'category_id'
+      ],
+    }
   })
     .then(dbCategoryData => {
       if (!dbCategoryData) {
